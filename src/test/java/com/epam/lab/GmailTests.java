@@ -1,9 +1,11 @@
 package com.epam.lab;
 
+import com.epam.lab.page_objects.LogInPO;
+import com.epam.lab.page_objects.MainGmailPO;
+import com.epam.lab.singleton.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -11,9 +13,12 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
+
+import static com.epam.lab.singleton.DriverManager.getDriver;
+import static com.epam.lab.singleton.DriverManager.setBrowser;
+import static com.epam.lab.utils.Constants.URL;
 
 public class GmailTests {
     private static org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(GmailTests.class);
@@ -21,16 +26,14 @@ public class GmailTests {
     private String randomText;
     private WebDriverWait wait;
 
-    public GmailTests() {
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
-        driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, 30);
-    }
-
     @BeforeMethod
     public void setupDriver() {
-        driver.get("https://www.google.com");
-        driver.manage().window().maximize();
+        setBrowser(DriverManager.DriverType.CHROME);
+        getDriver().get(URL);
+        Assert.assertTrue(getDriver().getCurrentUrl().contains(URL), "Website has incorrect url");
+        driver = getDriver();
+        wait = new WebDriverWait(driver, 30);
+
     }
 
     @Test(description = "Verify send letter with incorrect address")
@@ -46,13 +49,12 @@ public class GmailTests {
 
     @AfterMethod
     public void closeDriver() {
-        driver.quit();
+        getDriver().quit();
     }
 
     public void loggingToAccount() {
         By inputPath = By.id("identifierId");
         driver.findElement(inputPath).sendKeys("seleniumlab12@gmail.com");
-
         WebElement pressContinueButton = driver.findElement(By.xpath("//div[@id='identifierNext']/div/button"));
         pressContinueButton.click();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
@@ -63,25 +65,19 @@ public class GmailTests {
     }
 
     public void openGmailPage() {
-        WebElement inputField = driver.findElement(By.name("q"));
-        inputField.sendKeys("Gmail");
-        inputField.submit();
+        MainGmailPO mainGmailPO = new MainGmailPO();
+        mainGmailPO.typeText("Gmail");
         log.info("Page title is:" + driver.getTitle());
-        (new WebDriverWait(driver, 50)).until((dr) -> dr.getTitle().startsWith("Gmail"));
-        WebElement getPostPage = driver.findElement(By.xpath("//div[@id='rso']/div/div/div/div/a"));
-        getPostPage.click();
+        mainGmailPO.waitTitle("Gmail");
+        mainGmailPO.selectGmailItem();
         Assert.assertTrue(driver.getTitle().contains("Gmail"), "Title does not contain Gmail word");
-        WebElement logInToAccount = driver.findElement
-                (By.xpath("(//div[contains(@class,'header--desktop')]//a[@ga-event-action='sign in'])[1]"));
-        logInToAccount.click();
+        mainGmailPO.logIn();
     }
 
 
     public void switchToGmailTab() {
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
-        String handleName = tabs.get(1);
-        driver.switchTo().window(handleName);
+        LogInPO logInPO = new LogInPO();
+        logInPO.switchToLogin();
     }
 
     public void sendIncorrectLetter() {
@@ -105,27 +101,23 @@ public class GmailTests {
         Assert.assertTrue(alertTab.isDisplayed(), "Tab about incorrect address is not displayed");
         WebElement submitTabIncorrectAddress = driver.findElement(By.xpath("//button[@name='ok']"));
         submitTabIncorrectAddress.click();
-
     }
+
     public void sendCorrectLetter() {
-        By changeOnCorrectAddress=By.xpath("//div/div/span[contains(text(),\"ira.mysiuk.com\")]");
+        By changeOnCorrectAddress = By.xpath("//div/div/span[contains(text(),\"ira.mysiuk.com\")]");
         driver.findElement(changeOnCorrectAddress).click();
         By clearField = By.xpath("//span/div[contains(text(),'ira.mysiuk.com')]/following-sibling::div");
-           driver.findElement(clearField).click();
-        By typeCorrectAddress=By.xpath("//textarea[@role='combobox']");
-          driver.findElement(typeCorrectAddress).sendKeys("ira.mysiuk@gmail.com");
-        By typeGoal = By.xpath("//div/input[@name='subjectbox']");
-        driver.findElement(typeGoal).sendKeys("Important message from IntellijIDEA");
-        By typeText = By.xpath("//div[@role='textbox']");
-        randomText = String.valueOf(new Random().nextInt(10000));
-        driver.findElement(typeText).sendKeys(randomText);
+        driver.findElement(clearField).click();
+        By typeCorrectAddress = By.xpath("//textarea[@role='combobox']");
+        driver.findElement(typeCorrectAddress).sendKeys("ira.mysiuk@gmail.com");
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//table[@role='group']//div[@role='button'])[1]")));
         WebElement pressSendButton = driver.findElement(By.xpath("(//table[@role=\"group\"]//div[@role='button'])[1]"));
         pressSendButton.click();
     }
 
     public void verifySentLetter() {
-        WebElement sentButton = driver.findElement(By.xpath("//a[@aria-label=\"Надіслані\"]"));
+        (new WebDriverWait(driver, 50)).until((dr) -> dr.findElement(By.xpath("(//div[@role='navigation']//div/span/a)[4]")).isDisplayed());
+        WebElement sentButton = driver.findElement(By.xpath("(//div[@role='navigation']//div/span/a)[4]"));
         sentButton.click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//tbody/tr/td[@role=\"gridcell\"])[8]/span/span")));
         WebElement sentMessages = driver.findElement(By.xpath("(//tbody/tr/td[@role=\"gridcell\"]//span)[20]"));
