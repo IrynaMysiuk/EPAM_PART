@@ -33,7 +33,7 @@ public class LetterPO extends AbstractPO {
     private WebElement sentButton;
     @FindBy(xpath = "(//tbody/tr/td[@role=\"gridcell\"])[8]/span/span")
     private WebElement waitSendLetter;
-    @FindBy(xpath="(//tbody/tr/td[@role=\"gridcell\"]//span)[20]")
+    @FindBy(xpath = "(//tbody/tr/td[@role=\"gridcell\"]//span)[20]")
     private WebElement sentMessage;
 
     public void checkLoadPage() {
@@ -98,7 +98,8 @@ public class LetterPO extends AbstractPO {
     public void waitSentLetter() {
         getWebElementWithWait(WaitCondition.VISIBILITY, waitSendLetter);
     }
-    public WebElement getSentMessage(){
-        return getWebElementWithWait(WaitCondition.CLICKABLE,sentMessage);
+
+    public WebElement getSentMessage() {
+        return getWebElementWithWait(WaitCondition.CLICKABLE, sentMessage);
     }
 }

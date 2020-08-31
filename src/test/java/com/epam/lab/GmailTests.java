@@ -4,12 +4,10 @@ import com.epam.lab.page_objects.LetterPO;
 import com.epam.lab.page_objects.LogInPO;
 import com.epam.lab.page_objects.MainGmailPO;
 import com.epam.lab.singleton.DriverManager;
+import com.epam.lab.utils.XLSReader;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.util.Random;
 
@@ -17,6 +15,7 @@ import static com.epam.lab.singleton.DriverManager.getDriver;
 import static com.epam.lab.singleton.DriverManager.setBrowser;
 import static com.epam.lab.utils.Constants.*;
 
+@Listeners(ListenerTest.class)
 public class GmailTests {
 
 
@@ -26,6 +25,30 @@ public class GmailTests {
     private LogInPO logInPO;
     private MainGmailPO mainGmailPO;
     private LetterPO letterPO;
+
+    private String login;
+    private String password;
+    private String correctEmail;
+    private String subject;
+    private String incorrectEmail;
+
+    public GmailTests() {
+    }
+
+    @Factory(dataProvider = "currentDataProvider")
+    public GmailTests(String login, String password, String correctEmail, String subject, String incorrectEmail) {
+        this.login = login;
+        this.password = password;
+        this.correctEmail = correctEmail;
+        this.subject = subject;
+        this.incorrectEmail = incorrectEmail;
+    }
+
+    @DataProvider(name = "currentDataProvider")
+    public Object[][] initUsers() {
+        XLSReader xslReader = new XLSReader();
+        return xslReader.readXSLfile();
+    }
 
     @BeforeMethod
     public void setupDriver() {
@@ -55,9 +78,9 @@ public class GmailTests {
     }
 
     public void loggingToAccount() {
-        logInPO.typeLogin(GMAIL_LOGIN);
+        logInPO.typeLogin(login);
         logInPO.submitLogin();
-        logInPO.typePassword(GMAIL_PASSWORD);
+        logInPO.typePassword(password);
         logInPO.submitPassword();
     }
 
@@ -78,8 +101,8 @@ public class GmailTests {
     public void sendIncorrectLetter() {
         letterPO.checkLoadPage();
         letterPO.clickSendLetter();
-        letterPO.inputIncorrectAddress(INCORRECT_ADDRESS);
-        letterPO.inputLetterTheme(INPUT_THEME);
+        letterPO.inputIncorrectAddress(incorrectEmail);
+        letterPO.inputLetterTheme(subject);
         randomText = String.valueOf(new Random().nextInt(10000));
         letterPO.inputTextBox(randomText);
         letterPO.checkCompleteLetter();
@@ -94,7 +117,7 @@ public class GmailTests {
     public void sendCorrectLetter() {
         letterPO.changeAddress();
         letterPO.clearFieldAddress();
-        letterPO.inputCorrectAddress(CORRECT_ADDRESS);
+        letterPO.inputCorrectAddress(correctEmail);
         letterPO.submitButtonSend();
     }
 

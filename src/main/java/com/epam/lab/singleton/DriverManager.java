@@ -1,5 +1,6 @@
 package com.epam.lab.singleton;
 
+import com.epam.lab.utils.PropertyReader;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -9,8 +10,6 @@ import java.util.concurrent.TimeUnit;
 
 public class DriverManager {
 
-    public static final String WEBDRIVER_CHROME_DRIVER = "webdriver.chrome.driver";
-    public static final String CHROME_DRIVER_PATH = "src/main/resources/chromedriver.exe";
     public static final String WEBDRIVER_FIREFOX_DRIVER = "webdriver.firefox.marionette";
     public static final String FIREFOX_DRIVER_PATH = "src/main/resources/geckodriver.exe";
     private static WebDriver driver;
@@ -32,7 +31,7 @@ public class DriverManager {
                     break;
                 }
                 default: {
-                    System.setProperty(WEBDRIVER_CHROME_DRIVER, CHROME_DRIVER_PATH);
+                    System.setProperty(PropertyReader.driverName, PropertyReader.pathChromeDriver);
                     driver = new ChromeDriver();
                     break;
                 }
