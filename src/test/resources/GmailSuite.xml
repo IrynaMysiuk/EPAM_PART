@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Gmail Suite" parallel="false">
+    <listeners>
+        <listener class-name="com.epam.lab.ListenerTest"/>
+    </listeners>
+    <test name="Advanced Task 6 Tests">
+        <classes>
+            <class name="com.epam.lab.GmailTests"/>
+        </classes>
+    </test>
+</suite>

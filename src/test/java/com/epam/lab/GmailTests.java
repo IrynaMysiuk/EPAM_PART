@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.util.Random;
@@ -16,7 +17,7 @@ import java.util.Random;
 import static com.epam.lab.singleton.DriverManager.getDriver;
 import static com.epam.lab.singleton.DriverManager.setBrowser;
 import static com.epam.lab.utils.Constants.*;
-
+@Listeners(ListenerTest.class)
 public class GmailTests {
 
 
