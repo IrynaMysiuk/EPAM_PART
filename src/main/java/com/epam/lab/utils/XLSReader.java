@@ -25,7 +25,7 @@ public class XLSReader {
         propertyReader.readProperties();
     }
 
-    public Object[][] readXSLfile() {
+    public List<ModelGmailUsers> readXSLfile() {
         try (FileInputStream excelFile = new FileInputStream(new File(usersGmailPath))) {
             usersData = new ArrayList<>();
             Workbook workbook = WorkbookFactory.create(excelFile);
@@ -46,19 +46,19 @@ public class XLSReader {
         } catch (IOException | InvalidFormatException e) {
             e.printStackTrace();
         }
-        return convertGmailData(usersData);
-    }
-
-    public Object[][] convertGmailData(List<ModelGmailUsers> gmailUsers) {
-        Object[][] usersData = new Object[cellCount][Constants.ROW_COUNT];
-        for (int cell = 0; cell < cellCount; cell++) {
-            usersData[cell][0] = gmailUsers.get(cell).getLogin();
-            usersData[cell][1] = gmailUsers.get(cell).getPassword();
-            usersData[cell][2] = gmailUsers.get(cell).getSendTo();
-            usersData[cell][3] = gmailUsers.get(cell).getSubject();
-            usersData[cell][4] = gmailUsers.get(cell).getIncorrectEmail();
-        }
         return usersData;
     }
+//
+//    public Object[][] convertGmailData(List<ModelGmailUsers> gmailUsers) {
+//        Object[][] usersData = new Object[cellCount][Constants.ROW_COUNT];
+//        for (int cell = 0; cell < cellCount; cell++) {
+//            usersData[cell][0] = gmailUsers.get(cell).getLogin();
+//            usersData[cell][1] = gmailUsers.get(cell).getPassword();
+//            usersData[cell][2] = gmailUsers.get(cell).getSendTo();
+//            usersData[cell][3] = gmailUsers.get(cell).getSubject();
+//            usersData[cell][4] = gmailUsers.get(cell).getIncorrectEmail();
+//        }
+//        return usersData;
+//    }
 
 }

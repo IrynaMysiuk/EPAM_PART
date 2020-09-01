@@ -2,13 +2,13 @@ package com.epam.lab.utils;
 
 public class ModelGmailUsers {
 
-    public String login;
-    public String password;
-    public String sendTo;
-    public String subject;
-    public String incorrectEmail;
+    private String login;
+    private String password;
+    private String sendTo;
+    private String subject;
+    private String incorrectEmail;
 
-    String getLogin() {
+    public String getLogin() {
         return login;
     }
 
@@ -16,7 +16,7 @@ public class ModelGmailUsers {
         this.login = login;
     }
 
-    String getPassword() {
+    public String getPassword() {
         return password;
     }
 
@@ -24,7 +24,7 @@ public class ModelGmailUsers {
         this.password = password;
     }
 
-    String getSendTo() {
+    public String getSendTo() {
         return sendTo;
     }
 
@@ -32,7 +32,7 @@ public class ModelGmailUsers {
         this.sendTo = toAddress;
     }
 
-    String getSubject() {
+    public String getSubject() {
         return subject;
     }
 
@@ -40,7 +40,7 @@ public class ModelGmailUsers {
         this.subject = subject;
     }
 
-    String getIncorrectEmail() {
+    public String getIncorrectEmail() {
         return incorrectEmail;
     }
 
