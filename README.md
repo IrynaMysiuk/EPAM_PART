@@ -14,12 +14,12 @@
 ### Content
 **Task 6. Test steps:**
 
-* Open gmail & login
-* Click on compose button
-* Enter incorrect email in “to” field, fill “subject”/”message” fields & press “send” button 
-* Verify that warning message appears
-* Click “OK” & enter correct email address & click send
-* Verify that message is moved to “Sent mail” folder
+1. Open gmail & login
+1. Click on compose button
+1. Enter incorrect email in “to” field, fill “subject”/”message” fields & press “send” button 
+1. Verify that warning message appears
+1. Click “OK” & enter correct email address & click send
+1. Verify that message is moved to “Sent mail” folder
 
 ### Test Data
 Letter info indicated in `src/main/resources/dataGmail.xls`
@@ -35,6 +35,7 @@ Look at `src/main/resources/path.properties`
 ### Reports
 
 After running tests reports are generated in:
+
 * Allure report `allure-results`
 Note: execute command `allure serve allure-results`
 * TestNG report `target/surefire-reports/index.html`
