@@ -12,13 +12,13 @@
 4. utils - additional package 
 
 ### Content
-Task 6. Test steps:
+**Task 6. Test steps:**
 1. Open gmail & login
-2. Click on compose button
-3. Enter incorrect email in “to” field, fill “subject”/”message” fields & press “send” button 
-4. Verify that warning message appears
-5. Click “OK” & enter correct email address & click send
-6. Verify that message is moved to “Sent mail” folder
+1. Click on compose button
+1. Enter incorrect email in “to” field, fill “subject”/”message” fields & press “send” button 
+1. Verify that warning message appears
+1. Click “OK” & enter correct email address & click send
+1. Verify that message is moved to “Sent mail” folder
 
 ### Test Data
 Letter info indicated in `src/main/resources/dataGmail.xls`
@@ -34,13 +34,17 @@ Look at `src/main/resources/path.properties`
 ### Reports
 
 After running tests reports are generated in:
-
+* Allure report `allure-results`
+Note: execute command `allure serve allure-results`
 * TestNG report `target/surefire-reports/index.html`
 * Emailable report `targer/surefire-reports/emailable-report.html`
 
 ### Build
 
     mvn clean test
+Generate Allure report: 
+
+    allure serve allure-results 
 
 ### Developer 
  Iryna Mysiuk - https://bitbucket.org/IrynaMysiuk/
