@@ -12,7 +12,6 @@
 4. utils - additional package 
 
 ### Content
-
 Task 6. Test steps:
 1. Open gmail & login
 2. Click on compose button
