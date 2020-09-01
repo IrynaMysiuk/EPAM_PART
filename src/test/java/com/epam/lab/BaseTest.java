@@ -1,8 +1,8 @@
 package com.epam.lab;
 
 import com.epam.lab.business_objects.LetterBO;
-import com.epam.lab.page_objects.LogInPO;
-import com.epam.lab.page_objects.MainGmailPO;
+import com.epam.lab.business_objects.LogInBO;
+import com.epam.lab.business_objects.MainGmailBO;
 import com.epam.lab.singleton.DriverManager;
 import com.epam.lab.utils.XLSReader;
 import org.openqa.selenium.WebDriver;
@@ -21,8 +21,8 @@ import static com.epam.lab.utils.Constants.URL;
 @Listeners(ListenerTest.class)
 public class BaseTest {
     protected WebDriver driver;
-    protected LogInPO logInPO;
-    protected MainGmailPO mainGmailPO;
+    protected LogInBO logInBO;
+    protected MainGmailBO mainGmailBO;
     protected LetterBO letterBO;
     protected static org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(GmailTests.class);
 
@@ -32,10 +32,9 @@ public class BaseTest {
         getDriver().get(URL);
         Assert.assertTrue(getDriver().getCurrentUrl().contains(URL), "Website has incorrect url");
         driver = getDriver();
-        logInPO = new LogInPO();
-        mainGmailPO = new MainGmailPO();
+        logInBO = new LogInBO();
+        mainGmailBO = new MainGmailBO();
         letterBO = new LetterBO();
-
     }
 
     @DataProvider(name = "currentDataProvider")
