@@ -1,94 +1,95 @@
 package com.epam.lab.page_objects;
 
+import com.epam.lab.decorator.AbstractPageElement;
+import com.epam.lab.decorator.NavigationLink;
+import com.epam.lab.decorator.TextContainer;
+import com.epam.lab.decorator.TextField;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class LetterPO extends AbstractPO {
 
     @FindBy(css = "a[title='Gmail'] > img")
-    private WebElement checkLoadGmailPage;
+    private AbstractPageElement checkLoadGmailPage;
     @FindBy(css = "div[gh='cm']")
-    private WebElement pressSendLetter;
+    private NavigationLink pressSendLetter;
     @FindBy(xpath = "//textarea[@role='combobox']")
-    private WebElement typeIncorrectAddress;
+    private TextField typeIncorrectAddress;
     @FindBy(xpath = "//div/input[@name='subjectbox']")
-    private WebElement typeTheme;
+    private TextField typeTheme;
     @FindBy(xpath = "//div[@role='textbox']")
-    private WebElement typeText;
+    private TextField typeText;
     @FindBy(xpath = "(//table[@role='group']//div[@role='button'])[1]")
-    private WebElement clickButtonSentLetter;
+    private NavigationLink clickButtonSentLetter;
     @FindBy(xpath = "//div[@role='alertdialog']")
-    private WebElement checkAlertTab;
+    private AbstractPageElement checkAlertTab;
     @FindBy(xpath = "//button[@name='ok']")
-    private WebElement submitAlertTab;
+    private NavigationLink submitAlertTab;
     @FindBy(xpath = "//div/div/span[contains(text(),\"ira.mysiuk.com\")]")
-    private WebElement changeOnCorrectAddress;
+    private NavigationLink changeOnCorrectAddress;
     @FindBy(xpath = "//span/div[contains(text(),'ira.mysiuk.com')]/following-sibling::div")
-    private WebElement clearAddressField;
+    private NavigationLink clearAddressField;
     @FindBy(xpath = "//textarea[@role='combobox']")
-    private WebElement typeCorrectAddress;
+    private TextField typeCorrectAddress;
     @FindBy(xpath = "(//table[@role='group']//div[@role='button'])[1]")
-    private WebElement pressSentLetter;
+    private NavigationLink pressSentLetter;
     @FindBy(xpath = "(//div[@role='navigation']//div/span/a)[4]")
-    private WebElement sentButton;
+    private NavigationLink sentButton;
     @FindBy(xpath = "(//tbody/tr/td[@role=\"gridcell\"])[8]/span/span")
-    private WebElement waitSendLetter;
+    private AbstractPageElement waitSendLetter;
     @FindBy(xpath = "(//tbody/tr/td[@role=\"gridcell\"]//span)[20]")
-    private WebElement sentMessage;
+    private TextContainer sentMessage;
 
     public void checkLoadPage() {
-        getWebElementWithWait(WaitCondition.VISIBILITY, checkLoadGmailPage);
+        checkLoadGmailPage.getElement();
     }
 
     public void clickSendLetter() {
-        WebElement clickSent = getWebElementWithWait(WaitCondition.CLICKABLE, pressSendLetter);
-        clickSent.click();
+        pressSendLetter.click();
     }
 
     public void inputIncorrectAddress(String incorrectText) {
-        WebElement typeIncorrect = getWebElementWithWait(WaitCondition.VISIBILITY, typeIncorrectAddress);
-        typeIncorrect.sendKeys(incorrectText);
+        typeIncorrectAddress.sendText(incorrectText);
     }
 
     public void inputLetterTheme(String inputTheme) {
-        getWebElementWithWait(WaitCondition.CLICKABLE, typeTheme).sendKeys(inputTheme);
+        typeTheme.sendText(inputTheme);
     }
 
     public void inputTextBox(String text) {
-        getWebElementWithWait(WaitCondition.VISIBILITY, typeText).sendKeys(text);
+        typeText.sendText(text);
     }
 
     public void checkCompleteLetter() {
-        getWebElementWithWait(WaitCondition.VISIBILITY, clickButtonSentLetter).click();
+        clickButtonSentLetter.click();
     }
 
     public WebElement getAlertDialog() {
-        return getWebElementWithWait(WaitCondition.VISIBILITY, checkAlertTab);
+        return checkAlertTab.getElement();
     }
 
     public void submitAlertTab() {
-        getWebElementWithWait(WaitCondition.CLICKABLE, submitAlertTab).click();
+        submitAlertTab.click();
     }
 
     public void changeAddress() {
-        getWebElementWithWait(WaitCondition.CLICKABLE, changeOnCorrectAddress).click();
+        changeOnCorrectAddress.click();
     }
 
     public void clearFieldAddress() {
-        getWebElementWithWait(WaitCondition.CLICKABLE, clearAddressField).click();
+        clearAddressField.click();
     }
 
     public void inputCorrectAddress(String correctText) {
-        WebElement typeCorrect = getWebElementWithWait(WaitCondition.VISIBILITY, typeCorrectAddress);
-        typeCorrect.sendKeys(correctText);
+        typeCorrectAddress.sendText(correctText);
     }
 
     public void submitButtonSend() {
-        getWebElementWithWait(WaitCondition.CLICKABLE, pressSentLetter).click();
+        pressSendLetter.click();
     }
 
-    public WebElement getSentButton() {
-        return getWebElementWithWait(WaitCondition.CLICKABLE, sentButton);
+    public NavigationLink getSentButton() {
+        return sentButton;
     }
 
     public void clickSentButton() {
@@ -96,10 +97,10 @@ public class LetterPO extends AbstractPO {
     }
 
     public void waitSentLetter() {
-        getWebElementWithWait(WaitCondition.VISIBILITY, waitSendLetter);
+        waitSendLetter.getElement();
     }
 
-    public WebElement getSentMessage() {
-        return getWebElementWithWait(WaitCondition.CLICKABLE, sentMessage);
+    public String getSentMessage() {
+        return sentMessage.getText();
     }
 }

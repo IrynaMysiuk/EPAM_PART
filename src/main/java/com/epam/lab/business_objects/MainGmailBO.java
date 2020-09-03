@@ -19,7 +19,6 @@ public class MainGmailBO {
         log.info("Page title is:" + getDriver().getTitle());
         mainGmailPO.waitTitle(GMAIL);
         mainGmailPO.selectGmailItem();
-
     }
 
     public void logIn() {

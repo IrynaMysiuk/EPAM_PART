@@ -46,7 +46,7 @@ public class LetterBO {
         log.info("Click sent button and check text in letter");
         letterPO.clickSentButton();
         letterPO.waitSentLetter();
-        return letterPO.getSentMessage().getText().replace(" - \n", "");
+        return letterPO.getSentMessage().replace(" - \n", "");
     }
 
     public String getExpectedMessage() {

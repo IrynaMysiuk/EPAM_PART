@@ -1,27 +1,28 @@
 package com.epam.lab.page_objects;
 
-import org.openqa.selenium.WebElement;
+import com.epam.lab.decorator.NavigationLink;
+import com.epam.lab.decorator.TextField;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.FindBy;
 
 import static com.epam.lab.singleton.DriverManager.getWait;
 
 public class MainGmailPO extends AbstractPO {
-    @FindBy(name = "q")
-    private WebElement searchType;
-    @FindBy(xpath = "(//div[@id='search']//a)[1]")
-    private WebElement gmailItem;
 
+    @FindBy(name = "q")
+    private TextField searchType;
+    @FindBy(xpath = "(//div[@id='search']//a)[1]")
+    private NavigationLink gmailItem;
     @FindBy(xpath = "(//div[contains(@class,'header--desktop')]//a[@ga-event-action='sign in'])[1]")
-    private WebElement signInButton;
+    private NavigationLink signInButton;
 
     public void typeText(String text) {
-        WebElement searchInput = getWebElementWithWait(WaitCondition.VISIBILITY, searchType);
-        searchInput.sendKeys(text);
-        searchInput.submit();
+        searchType.sendText(text);
+        searchType.sendText(Keys.ENTER);
     }
 
     public void selectGmailItem() {
-        getWebElementWithWait(WaitCondition.CLICKABLE, gmailItem).click();
+        gmailItem.click();
     }
 
     public void waitTitle(String titleText) {
@@ -29,7 +30,6 @@ public class MainGmailPO extends AbstractPO {
     }
 
     public void logIn() {
-        getWebElementWithWait(WaitCondition.CLICKABLE, signInButton).click();
+        signInButton.click();
     }
-
 }
