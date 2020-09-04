@@ -120,16 +120,6 @@ public class AbstractPageElement {
         return getWebElementWithWait(WaitCondition.VISIBILITY, wrappedElement);
     }
 
-
-    protected boolean isClickable(WebElement element) {
-        try {
-            return element.isDisplayed() && element.isEnabled();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
     protected WebElement getWebElementWithWait(WaitCondition waitCondition, WebElement element) {
         if (waitCondition.equals(WaitCondition.VISIBILITY))
             return getWait().until(ExpectedConditions.visibilityOf(element));

@@ -85,15 +85,11 @@ public class LetterPO extends AbstractPO {
     }
 
     public void submitButtonSend() {
-        pressSendLetter.click();
-    }
-
-    public NavigationLink getSentButton() {
-        return sentButton;
+        pressSentLetter.click();
     }
 
     public void clickSentButton() {
-        getSentButton().click();
+        sentButton.click();
     }
 
     public void waitSentLetter() {

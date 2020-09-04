@@ -1,5 +1,6 @@
 package com.epam.lab;
 
+import com.epam.lab.business_objects.MainGmailBO;
 import com.epam.lab.utils.ModelGmailUsers;
 import org.testng.Assert;
 import org.testng.annotations.Test;

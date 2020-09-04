@@ -24,7 +24,6 @@ public class BaseTest {
     protected LogInBO logInBO;
     protected MainGmailBO mainGmailBO;
     protected LetterBO letterBO;
-    protected static org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(GmailTests.class);
 
     @BeforeMethod
     protected void setupDriver() {

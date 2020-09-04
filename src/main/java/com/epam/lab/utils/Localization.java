@@ -10,8 +10,6 @@ public class Localization {
     private static ResourceBundle messages;
 
     public final static String CLICK_BUTTON = "button_click";
-    public final static String BUTTON_SUBMIT = "button_submit";
-    public final static String NO_BUTTON = "no_button";
    public final static String TEXT_CONTAINER_GET = "text_container_get";
     public final static String NO_TEXT_CONTAINER = "no_text_container";
     public final static String INPUT_SET_VALUE = "input_set_value";
