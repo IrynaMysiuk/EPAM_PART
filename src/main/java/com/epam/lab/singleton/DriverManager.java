@@ -21,9 +21,9 @@ public class DriverManager {
         return wait;
     }
 
-    public static WebDriver getDriver(DriverType browser) {
+    public static WebDriver getDriver(String browser) {
         WebDriver driver;
-        if (browser == DriverType.FIREFOX) {
+        if (DriverType.FIREFOX.getBrowser().equals(browser)) {
             System.setProperty(PropertyReader.driverFirefoxName, PropertyReader.pathFirefoxDriver);
             driver = new FirefoxDriver();
         } else {
@@ -38,8 +38,17 @@ public class DriverManager {
     }
 
     public enum DriverType {
-        CHROME,
-        FIREFOX
+        CHROME("chrome"),
+        FIREFOX("firefox");
+        private String browser;
+
+        DriverType(String browser) {
+            this.browser = browser;
+        }
+
+        public String getBrowser() {
+            return browser;
+        }
     }
 
 }

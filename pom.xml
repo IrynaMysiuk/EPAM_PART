@@ -10,6 +10,7 @@
     <properties>
         <aspectj.version>1.8.13</aspectj.version>
         <suite.name>GmailSuite</suite.name>
+        <browser.name>chrome</browser.name>
     </properties>
     <build>
         <plugins>
