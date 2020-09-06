@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.ArrayList;
 
-import static com.epam.lab.singleton.DriverManager.getDriver;
+import static com.epam.lab.singleton.DriverContainer.getDriver;
 
 public class LogInPO extends AbstractPO {
 

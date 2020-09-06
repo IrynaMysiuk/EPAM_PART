@@ -5,15 +5,12 @@ import com.epam.lab.page_objects.LetterPO;
 import java.util.Random;
 
 public class LetterBO {
-    protected LetterPO letterPO;
     private String randomText;
     private static org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(MainGmailBO.class);
 
-    public LetterBO() {
-        letterPO = new LetterPO();
-    }
 
     public void sendIncorrectLetter(String incorrectEmail, String subject) {
+        LetterPO letterPO = new LetterPO();
         log.info("Sending incorrect address in letter");
         letterPO.checkLoadPage();
         letterPO.clickSendLetter();
@@ -25,16 +22,19 @@ public class LetterBO {
     }
 
     public void submitIncorrectAddress() {
+        LetterPO letterPO = new LetterPO();
         log.info("Click submit button in alert message with incorrect address");
         letterPO.submitAlertTab();
     }
 
     public boolean isAlertTabDisplayed() {
+        LetterPO letterPO = new LetterPO();
         log.info("Check alert tab is displayed");
         return letterPO.getAlertDialog().isDisplayed();
     }
 
     public void sendCorrectLetter(String correctEmail) {
+        LetterPO letterPO = new LetterPO();
         log.info("Update for correct address in letter");
         letterPO.changeAddress();
         letterPO.clearFieldAddress();
@@ -43,6 +43,7 @@ public class LetterBO {
     }
 
     public String getActualMessage() {
+        LetterPO letterPO = new LetterPO();
         log.info("Click sent button and check text in letter");
         letterPO.clickSentButton();
         letterPO.waitSentLetter();

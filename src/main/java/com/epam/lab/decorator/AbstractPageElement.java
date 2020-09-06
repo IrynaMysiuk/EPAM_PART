@@ -10,12 +10,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.lang.reflect.Field;
 
-import static com.epam.lab.singleton.DriverManager.getDriver;
+import static com.epam.lab.singleton.DriverContainer.getDriver;
 import static com.epam.lab.singleton.DriverManager.getWait;
 
 public class AbstractPageElement {
-
-    protected WebDriver driver;
     protected WebElement wrappedElement;
     protected Field field;
     protected String name;
@@ -23,12 +21,8 @@ public class AbstractPageElement {
     protected By by;
     protected static org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(AbstractPageElement.class);
 
-    public AbstractPageElement() {
-        this.driver = getDriver();
-    }
-
     public void fillFields(WebElement wrappedElement, Field field) {
-        this.driver = getDriver();
+
         this.wrappedElement = wrappedElement;
         this.field = field;
         this.by = getBy(field);

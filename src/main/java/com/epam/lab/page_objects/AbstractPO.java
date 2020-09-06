@@ -3,7 +3,8 @@ package com.epam.lab.page_objects;
 import com.epam.lab.decorator.FieldDecorator;
 import org.openqa.selenium.support.PageFactory;
 
-import static com.epam.lab.singleton.DriverManager.getDriver;
+import static com.epam.lab.singleton.DriverContainer.getDriver;
+
 
 public class AbstractPO {
 

@@ -4,6 +4,7 @@ import com.epam.lab.decorator.NavigationLink;
 import com.epam.lab.decorator.TextField;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static com.epam.lab.singleton.DriverManager.getWait;
 
@@ -15,6 +16,8 @@ public class MainGmailPO extends AbstractPO {
     private NavigationLink gmailItem;
     @FindBy(xpath = "(//div[contains(@class,'header--desktop')]//a[@ga-event-action='sign in'])[1]")
     private NavigationLink signInButton;
+    @FindBy(id = "hplogo")
+    private NavigationLink googleLogo;
 
     public void typeText(String text) {
         searchType.sendText(text);
@@ -31,5 +34,9 @@ public class MainGmailPO extends AbstractPO {
 
     public void logIn() {
         signInButton.click();
+    }
+
+    public void waitGoogleLogo() {
+        getWait().until(ExpectedConditions.visibilityOf(googleLogo.getElement()));
     }
 }
