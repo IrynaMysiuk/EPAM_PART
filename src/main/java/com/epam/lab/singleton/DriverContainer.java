@@ -10,7 +10,7 @@ public class DriverContainer {
 
     public static WebDriver getDriver() {
         if (DRIVER_POOL.get() == null) {
-            DRIVER_POOL.set(DriverManager.getDriver(DriverManager.DriverType.CHROME));
+            DRIVER_POOL.set(DriverManager.getDriver(DriverManager.DriverType.FIREFOX));
         }
         return DRIVER_POOL.get();
     }

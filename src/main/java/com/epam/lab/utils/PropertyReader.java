@@ -6,7 +6,9 @@ import java.util.Properties;
 
 public class PropertyReader {
     public static String driverName;
+    public static String driverFirefoxName;
     public static String pathChromeDriver;
+    public static String pathFirefoxDriver;
     public static String usersGmailPath;
 
     public void readProperties() {
@@ -22,6 +24,8 @@ public class PropertyReader {
     private void initPath(Properties properties) {
         pathChromeDriver = properties.getProperty("chromeDriverPath.value");
         driverName = properties.getProperty("driver.value");
+        pathFirefoxDriver = properties.getProperty("firefoxDriverPath.value");
+        driverFirefoxName = properties.getProperty("driver.firefox.value");
         usersGmailPath = properties.getProperty("usersGmailXLSPath.value");
     }
 }
