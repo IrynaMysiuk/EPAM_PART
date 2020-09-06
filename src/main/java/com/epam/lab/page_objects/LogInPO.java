@@ -4,10 +4,6 @@ import com.epam.lab.decorator.NavigationLink;
 import com.epam.lab.decorator.TextField;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.ArrayList;
-
-import static com.epam.lab.singleton.DriverContainer.getDriver;
-
 public class LogInPO extends AbstractPO {
 
     @FindBy(id = "identifierId")
@@ -19,26 +15,20 @@ public class LogInPO extends AbstractPO {
     @FindBy(xpath = "//div[@id='passwordNext']/div/button")
     private NavigationLink pressSubmitPassword;
 
-    public void switchToLogin() {
-        ArrayList<String> tabs = new ArrayList<>(getDriver().getWindowHandles());
-        String handleName = tabs.get(1);
-        getDriver().switchTo().window(handleName);
+    public TextField getLoginField() {
+        return inputLogin;
     }
 
-    public void typeLogin(String login) {
-        inputLogin.sendText(login);
+    public NavigationLink getLoginButton() {
+        return pressSubmitLogin;
     }
 
-    public void submitLogin() {
-        pressSubmitLogin.click();
+    public TextField getPasswordField() {
+        return inputPassword;
     }
 
-    public void typePassword(String password) {
-        inputPassword.sendText(password);
-    }
-
-    public void submitPassword() {
-        pressSubmitPassword.click();
+    public NavigationLink getPasswordButton() {
+        return pressSubmitPassword;
     }
 }
 

@@ -40,63 +40,63 @@ public class LetterPO extends AbstractPO {
     @FindBy(xpath = "(//tbody/tr/td[@role=\"gridcell\"]//span)[20]")
     private TextContainer sentMessage;
 
-    public void checkLoadPage() {
+    public void getAndWaitLoadPage() {
         checkLoadGmailPage.getElement();
     }
 
-    public void clickSendLetter() {
-        pressSendLetter.click();
+    public NavigationLink getSendLetter() {
+        return pressSendLetter;
     }
 
-    public void inputIncorrectAddress(String incorrectText) {
-        typeIncorrectAddress.sendText(incorrectText);
+    public TextField getIncorrectAddress() {
+        return typeIncorrectAddress;
     }
 
-    public void inputLetterTheme(String inputTheme) {
-        typeTheme.sendText(inputTheme);
+    public TextField getLetterTheme() {
+        return typeTheme;
     }
 
-    public void inputTextBox(String text) {
-        typeText.sendText(text);
+    public TextField getTextBox() {
+        return typeText;
     }
 
-    public void checkCompleteLetter() {
-        clickButtonSentLetter.click();
+    public NavigationLink getCompleteLetter() {
+        return clickButtonSentLetter;
     }
 
     public WebElement getAlertDialog() {
         return checkAlertTab.getElement();
     }
 
-    public void submitAlertTab() {
-        submitAlertTab.click();
+    public NavigationLink getAlertTab() {
+        return submitAlertTab;
     }
 
-    public void changeAddress() {
-        changeOnCorrectAddress.click();
+    public NavigationLink getAddress() {
+        return changeOnCorrectAddress;
     }
 
-    public void clearFieldAddress() {
-        clearAddressField.click();
+    public NavigationLink getClearFieldAddress() {
+        return clearAddressField;
     }
 
-    public void inputCorrectAddress(String correctText) {
-        typeCorrectAddress.sendText(correctText);
+    public TextField getCorrectAddress() {
+        return typeCorrectAddress;
     }
 
-    public void submitButtonSend() {
-        pressSentLetter.click();
+    public NavigationLink clickButtonSend() {
+        return pressSentLetter;
     }
 
-    public void clickSentButton() {
-        sentButton.click();
+    public NavigationLink clickSentButton() {
+        return sentButton;
     }
 
     public void waitSentLetter() {
         waitSendLetter.getElement();
     }
 
-    public String getSentMessage() {
-        return sentMessage.getText();
+    public TextContainer getSentMessage() {
+        return sentMessage;
     }
 }

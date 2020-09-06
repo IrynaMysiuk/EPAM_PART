@@ -11,9 +11,9 @@ public class TextField extends AbstractPageElement {
                 wrappedElement = getWebElementWithWait(WaitCondition.VISIBILITY, wrappedElement);
             clear();
             wrappedElement.sendKeys(text);
-            log.info(Localization.getMessage(Localization.INPUT_SET_VALUE, text, name, page));
+            log.info(Localization.getMessage(Localization.INPUT_SET_VALUE, text, name));
         } else
-            log.error(Localization.getMessage(Localization.NO_INPUT, name, page));
+            log.error(Localization.getMessage(Localization.NO_INPUT, name));
     }
 
     public void sendText(Keys key) {
@@ -21,18 +21,18 @@ public class TextField extends AbstractPageElement {
             if (!wrappedElement.isDisplayed())
                 wrappedElement = getWebElementWithWait(WaitCondition.VISIBILITY, wrappedElement);
             wrappedElement.sendKeys(key);
-            log.info(Localization.getMessage(Localization.INPUT_SET_VALUE, key.name(), name, page));
+            log.info(Localization.getMessage(Localization.INPUT_SET_VALUE, key.name(), name));
         } else
-            log.error(Localization.getMessage(Localization.NO_INPUT, name, page));
+            log.error(Localization.getMessage(Localization.NO_INPUT, name));
     }
 
     public void clear() {
         if (wrappedElement != null) {
             wrappedElement.clear();
-            log.debug("Clear element");
+            log.debug("Clear text from field");
         } else
             log.error(Localization
-                    .getMessage(Localization.NO_INPUT, name, page));
+                    .getMessage(Localization.NO_INPUT, name));
     }
 
 }

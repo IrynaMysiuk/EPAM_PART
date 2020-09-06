@@ -2,7 +2,6 @@ package com.epam.lab.decorator;
 
 import io.qameta.allure.Description;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -10,14 +9,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.lang.reflect.Field;
 
-import static com.epam.lab.singleton.DriverContainer.getDriver;
 import static com.epam.lab.singleton.DriverManager.getWait;
 
 public class AbstractPageElement {
     protected WebElement wrappedElement;
     protected Field field;
     protected String name;
-    protected String page;
     protected By by;
     protected static org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(AbstractPageElement.class);
 

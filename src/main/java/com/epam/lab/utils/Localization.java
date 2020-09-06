@@ -10,11 +10,10 @@ public class Localization {
     private static ResourceBundle messages;
 
     public final static String CLICK_BUTTON = "button_click";
-   public final static String TEXT_CONTAINER_GET = "text_container_get";
+    public final static String TEXT_CONTAINER_GET = "text_container_get";
     public final static String NO_TEXT_CONTAINER = "no_text_container";
     public final static String INPUT_SET_VALUE = "input_set_value";
     public final static String NO_INPUT = "no_input";
-    public final static String ELEMENT_HOVER = "element_hover";
 
     private static void init() {
         currentLocale = new Locale("en");

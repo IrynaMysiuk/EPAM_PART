@@ -9,13 +9,14 @@ public class NavigationLink extends AbstractPageElement {
     public void click() {
         String buttonName = "";
         if (wrappedElement != null) {
+            wrappedElement = getWebElementWithWait(WaitCondition.CLICKABLE, wrappedElement);
             buttonName = wrappedElement.getText();
-            getWebElementWithWait(WaitCondition.VISIBILITY, wrappedElement).click();
+            wrappedElement.click();
         }
         log.debug("Passed to:"
                 + getDriver().getCurrentUrl());
         log.info(Localization
-                .getMessage(Localization.CLICK_BUTTON, buttonName, page));
+                .getMessage(Localization.CLICK_BUTTON, buttonName));
     }
 
 

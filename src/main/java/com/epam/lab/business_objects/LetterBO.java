@@ -8,23 +8,22 @@ public class LetterBO {
     private String randomText;
     private static org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(MainGmailBO.class);
 
-
     public void sendIncorrectLetter(String incorrectEmail, String subject) {
         LetterPO letterPO = new LetterPO();
         log.info("Sending incorrect address in letter");
-        letterPO.checkLoadPage();
-        letterPO.clickSendLetter();
-        letterPO.inputIncorrectAddress(incorrectEmail);
-        letterPO.inputLetterTheme(subject);
+        letterPO.getAndWaitLoadPage();
+        letterPO.getSendLetter().click();
+        letterPO.getIncorrectAddress().sendText(incorrectEmail);
+        letterPO.getLetterTheme().sendText(subject);
         randomText = String.valueOf(new Random().nextInt(10000));
-        letterPO.inputTextBox(randomText);
-        letterPO.checkCompleteLetter();
+        letterPO.getTextBox().sendText(randomText);
+        letterPO.getCompleteLetter().click();
     }
 
     public void submitIncorrectAddress() {
         LetterPO letterPO = new LetterPO();
         log.info("Click submit button in alert message with incorrect address");
-        letterPO.submitAlertTab();
+        letterPO.getAlertTab().click();
     }
 
     public boolean isAlertTabDisplayed() {
@@ -36,18 +35,18 @@ public class LetterBO {
     public void sendCorrectLetter(String correctEmail) {
         LetterPO letterPO = new LetterPO();
         log.info("Update for correct address in letter");
-        letterPO.changeAddress();
-        letterPO.clearFieldAddress();
-        letterPO.inputCorrectAddress(correctEmail);
-        letterPO.submitButtonSend();
+        letterPO.getAddress().click();
+        letterPO.getClearFieldAddress().click();
+        letterPO.getCorrectAddress().sendText(correctEmail);
+        letterPO.clickButtonSend().click();
     }
 
     public String getActualMessage() {
         LetterPO letterPO = new LetterPO();
         log.info("Click sent button and check text in letter");
-        letterPO.clickSentButton();
+        letterPO.clickSentButton().click();
         letterPO.waitSentLetter();
-        return letterPO.getSentMessage().replace(" - \n", "");
+        return letterPO.getSentMessage().getText().replace(" - \n", "");
     }
 
     public String getExpectedMessage() {

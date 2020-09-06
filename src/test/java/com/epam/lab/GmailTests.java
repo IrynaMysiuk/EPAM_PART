@@ -4,12 +4,8 @@ import com.epam.lab.business_objects.LetterBO;
 import com.epam.lab.business_objects.LogInBO;
 import com.epam.lab.business_objects.MainGmailBO;
 import com.epam.lab.utils.ModelGmailUsers;
-import com.epam.lab.utils.XLSReader;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import java.util.Iterator;
 
 import static com.epam.lab.singleton.DriverContainer.getDriver;
 import static com.epam.lab.utils.Constants.GMAIL;
@@ -17,12 +13,6 @@ import static com.epam.lab.utils.Constants.URL;
 
 public class GmailTests extends BaseTest {
 
-    @DataProvider(name = "currentDataProvider", parallel = true)
-    protected Iterator<Object[]> initUsers() {
-        XLSReader xslReader = new XLSReader();
-
-        return xslReader.readXSLfile().stream().map(email -> new Object[]{email}).parallel().iterator();
-    }
 
     @Test(description = "Verify send letter with incorrect address", dataProvider = "currentDataProvider")
     public void checkLoginAccount(ModelGmailUsers modelGmailUsers) {
