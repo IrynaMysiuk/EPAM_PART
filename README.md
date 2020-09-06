@@ -32,6 +32,7 @@ Look at `src/main/resources/path.properties`
 | chromeDriverPath.value  | src/main/resources/chromedriver.exe  | Path to Chrome Driver |
 | driver.value  | webdriver.chrome.driver  | Driver name|
 |usersGmailXLSPath.value|src/main/resources/dataGmail.xls| Path to Gmail data in .xls|
+|browser.name|chrome|Set browser name ("chrome" or "firefox")|
 ### Reports
 
 After running tests reports are generated in:
@@ -47,6 +48,17 @@ Note: execute command `allure serve allure-results`
 Generate Allure report: 
 
     allure serve allure-results 
+    
+### Run
+The test suite is running with *5* test accounts by default and multiple data in parallel.
+There are *3* test thread in one time. After that we have *2* test thread from *5* test accounts.
+Thread pool `src/main/com/epam/lab/singleton/DriverContainer` developed to store web driver instances  
+
+    
+### Test Environments
+
+    Chrome Driver (path: src/main/resouces/chromedriver.exe)
+    Firefox Driver (path: src/main/resources/geckodriver.exe)
 
 ### Developer 
  Iryna Mysiuk - https://bitbucket.org/IrynaMysiuk/
