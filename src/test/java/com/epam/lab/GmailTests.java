@@ -13,7 +13,6 @@ import static com.epam.lab.utils.Constants.URL;
 
 public class GmailTests extends BaseTest {
 
-
     @Test(description = "Verify send letter with incorrect address", dataProvider = "currentDataProvider")
     public void checkLoginAccount(ModelGmailUsers modelGmailUsers) {
         MainGmailBO mainGmailBO = new MainGmailBO();
@@ -32,6 +31,4 @@ public class GmailTests extends BaseTest {
         Assert.assertEquals(letterBO.getActualMessage(), letterBO.getExpectedMessage(),
                 "Text message is not the same");
     }
-
-
 }

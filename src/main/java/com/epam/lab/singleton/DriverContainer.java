@@ -5,11 +5,14 @@ import org.openqa.selenium.WebDriver;
 
 public class DriverContainer {
     private static final ThreadLocal<WebDriver> DRIVER_POOL = new ThreadLocal<>();
+    private static PropertyReader propertyReader;
 
     private DriverContainer() {
     }
 
     public static WebDriver getDriver() {
+        propertyReader = new PropertyReader();
+        propertyReader.readProperties();
         if (DRIVER_POOL.get() == null) {
             DRIVER_POOL.set(DriverManager.getDriver(PropertyReader.browser));
         }
