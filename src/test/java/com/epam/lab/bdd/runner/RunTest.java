@@ -1,4 +1,4 @@
-package com.epam.lab.runner;
+package com.epam.lab.bdd.runner;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;

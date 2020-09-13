@@ -5,7 +5,7 @@
     </listeners>
     <test name="Advanced Task 6 Tests">
         <classes>
-            <class name="com.epam.lab.GmailTests"/>
+            <class name="com.epam.lab.ddt.GmailTests"/>
         </classes>
     </test>
 </suite>

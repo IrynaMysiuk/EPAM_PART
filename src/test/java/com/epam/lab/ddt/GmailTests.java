@@ -1,4 +1,4 @@
-package com.epam.lab;
+package com.epam.lab.ddt;
 
 import com.epam.lab.business_objects.LetterBO;
 import com.epam.lab.business_objects.LogInBO;

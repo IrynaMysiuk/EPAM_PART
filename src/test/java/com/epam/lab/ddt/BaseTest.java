@@ -1,5 +1,6 @@
-package com.epam.lab;
+package com.epam.lab.ddt;
 
+import com.epam.lab.ListenerTest;
 import com.epam.lab.utils.XLSReader;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;

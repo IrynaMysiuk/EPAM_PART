@@ -1,4 +1,4 @@
-package com.epam.lab.steps;
+package com.epam.lab.bdd.steps;
 
 import com.epam.lab.business_objects.MainGmailBO;
 import cucumber.api.java.en.And;

@@ -4,12 +4,15 @@
 
 * It is testing of Gmail page using Selenium
 * Project status: working
+* Integrated with Cucumber
 
 ## Project Structure
 1. page_objects - low level logic, path to locators separated in suitable classes
 2. bo - business object, common high level logic
 3. singleton - Selenium WebDriver with Singleton pattern
 4. utils - additional package 
+5. bdd - running tests with defined steps (test/java/com/epam/lab/steps) and .feature file (test/resources/validUser.feature)
+6. ddt - running tests with data set from .xls file (main/resources/dataGmail.xls)
 
 ### Content
 **Task 6. Test steps:**

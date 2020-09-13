@@ -1,4 +1,4 @@
-package com.epam.lab.steps;
+package com.epam.lab.bdd.steps;
 
 import com.epam.lab.business_objects.LogInBO;
 import cucumber.api.java.en.Given;
@@ -18,9 +18,10 @@ public class LoginPageSteps {
         logInBO.switchToGmailTab();
     }
 
-    @Then("^I fill in the login field (.*) and password (.*)$")
+    @Then("^I fill in the login field (\\w+@\\w+.\\w+) and password (\\w+)$")
     public void inputValidData(String login, String password) {
         logInBO.loggingToAccount(login, password);
     }
+
 
 }
