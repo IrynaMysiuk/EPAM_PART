@@ -12,7 +12,7 @@
 3. singleton - Selenium WebDriver with Singleton pattern
 4. utils - additional package 
 5. bdd - running tests with defined steps (test/java/com/epam/lab/steps) and .feature file (test/resources/validUser.feature)
-6. ddt - running tests with data set from .xls file (main/resources/dataGmail.xls)
+6. ddt - running tests with data set from .xls file (main/resources/dataGmail.xls) and data provider (test/java/com/epam/lab/ddt/BaseTest)
 
 ### Content
 **Task 6. Test steps:**

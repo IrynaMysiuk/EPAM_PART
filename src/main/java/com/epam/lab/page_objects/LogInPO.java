@@ -1,6 +1,7 @@
 package com.epam.lab.page_objects;
 
 import com.epam.lab.decorator.NavigationLink;
+import com.epam.lab.decorator.TextContainer;
 import com.epam.lab.decorator.TextField;
 import org.openqa.selenium.support.FindBy;
 
@@ -14,6 +15,8 @@ public class LogInPO extends AbstractPO {
     private TextField inputPassword;
     @FindBy(xpath = "//div[@id='passwordNext']/div/button")
     private NavigationLink pressSubmitPassword;
+    @FindBy(xpath = "//*[@data-allow-at-sign=\"true\"]//*[@aria-live=\"assertive\"]")
+    private TextContainer errorMessage;
 
     public TextField getLoginField() {
         return inputLogin;
@@ -29,6 +32,10 @@ public class LogInPO extends AbstractPO {
 
     public NavigationLink getPasswordButton() {
         return pressSubmitPassword;
+    }
+
+    public TextContainer getErrorMessage() {
+        return errorMessage;
     }
 }
 

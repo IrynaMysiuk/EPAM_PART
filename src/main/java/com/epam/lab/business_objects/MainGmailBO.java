@@ -1,9 +1,6 @@
 package com.epam.lab.business_objects;
 
 import com.epam.lab.page_objects.MainGmailPO;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
 import org.openqa.selenium.Keys;
 
 import static com.epam.lab.singleton.DriverContainer.getDriver;

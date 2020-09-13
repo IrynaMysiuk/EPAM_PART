@@ -1,9 +1,6 @@
 package com.epam.lab.business_objects;
 
 import com.epam.lab.page_objects.LetterPO;
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
 
 import java.util.Random;
 
@@ -49,7 +46,7 @@ public class LetterBO {
         log.info("Click sent button and check text in letter");
         letterPO.clickSentButton().click();
         letterPO.waitSentLetter();
-        return letterPO.getSentMessage().getText().replace(" - \n", "");
+        return letterPO.getSentMessage(randomText).getText().replace(" - \n", "");
     }
 
     public String getExpectedMessage() {

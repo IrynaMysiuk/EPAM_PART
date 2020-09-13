@@ -1,9 +1,6 @@
 package com.epam.lab.business_objects;
 
 import com.epam.lab.page_objects.LogInPO;
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
 
 import java.util.ArrayList;
 
@@ -32,5 +29,18 @@ public class LogInBO {
         ArrayList<String> tabs = new ArrayList<>(getDriver().getWindowHandles());
         String handleName = tabs.get(1);
         getDriver().switchTo().window(handleName);
+    }
+
+    public void inputEmail(String login) {
+        LogInPO logInPO = new LogInPO();
+        log.info("Fill login and password to Gmail account");
+        log.info("Typing login: " + login);
+        logInPO.getLoginField().sendText(login);
+        logInPO.getLoginButton().click();
+    }
+
+    public String getErrorMessage() {
+        LogInPO logInPO = new LogInPO();
+        return logInPO.getErrorMessage().getText();
     }
 }

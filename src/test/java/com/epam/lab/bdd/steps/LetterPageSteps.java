@@ -1,7 +1,7 @@
 package com.epam.lab.bdd.steps;
 
-import com.epam.lab.ddt.GmailTests;
 import com.epam.lab.business_objects.LetterBO;
+import com.epam.lab.ddt.GmailTests;
 import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;

@@ -1,4 +1,4 @@
-Feature: User's action
+Feature: Valid users
   In order to get information from Gmail
   The user must be registered.
 
@@ -30,4 +30,4 @@ Feature: User's action
       | selenium1lab12@gmail.com | selenium12 | ira.mysiuk@gmail.com | Important message from IntellijIDEA | ira.mysiuk.com |
       | selenium2lab12@gmail.com | Lablab12s_ | ira.mysiuk@gmail.com | Important message from IntellijIDEA | ira.mysiuk.com |
       | selenium3lab12@gmail.com | Lablab12s_ | ira.mysiuk@gmail.com | Important message from IntellijIDEA | ira.mysiuk.com |
-      | selenium4lab12@gmail.com | Lablab12s_ | ira.mysiuk@gmail.com | Important message from IntellijIDEA | ira.mysiuk.com |
+      | seleniumlab124@gmail.com | Lablab12s_ | ira.mysiuk@gmail.com | Important message from IntellijIDEA | ira.mysiuk.com |

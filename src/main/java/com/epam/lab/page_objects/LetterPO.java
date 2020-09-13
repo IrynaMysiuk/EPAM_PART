@@ -2,10 +2,12 @@ package com.epam.lab.page_objects;
 
 import com.epam.lab.decorator.AbstractPageElement;
 import com.epam.lab.decorator.NavigationLink;
-import com.epam.lab.decorator.TextContainer;
 import com.epam.lab.decorator.TextField;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import static com.epam.lab.singleton.DriverContainer.getDriver;
 
 public class LetterPO extends AbstractPO {
 
@@ -37,8 +39,7 @@ public class LetterPO extends AbstractPO {
     private NavigationLink sentButton;
     @FindBy(xpath = "(//tbody/tr/td[@role=\"gridcell\"])[8]/span/span")
     private AbstractPageElement waitSendLetter;
-    @FindBy(xpath = "(//tbody/tr/td[@role=\"gridcell\"]//span)[20]")
-    private TextContainer sentMessage;
+    private String sentMessage = "(//tbody/tr/td[@role=\"gridcell\"]//span[contains(text(), \"%s\")])";
 
     public void getAndWaitLoadPage() {
         checkLoadGmailPage.getElement();
@@ -96,7 +97,7 @@ public class LetterPO extends AbstractPO {
         waitSendLetter.getElement();
     }
 
-    public TextContainer getSentMessage() {
-        return sentMessage;
+    public WebElement getSentMessage(String randomText) {
+        return getDriver().findElement(By.xpath(String.format(sentMessage, randomText)));
     }
 }
