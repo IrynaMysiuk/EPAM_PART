@@ -3,6 +3,7 @@ package com.epam.lab.ddt;
 import com.epam.lab.business_objects.LetterBO;
 import com.epam.lab.business_objects.LogInBO;
 import com.epam.lab.business_objects.MainGmailBO;
+import com.epam.lab.business_objects.youTubeBO.YouTubeBO;
 import com.epam.lab.utils.ModelGmailUsers;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -30,5 +31,11 @@ public class GmailTests extends BaseTest {
         letterBO.sendCorrectLetter(modelGmailUsers.getSendTo());
         Assert.assertEquals(letterBO.getActualMessage(), letterBO.getExpectedMessage(),
                 "Text message is not the same");
+    }
+    @Test
+    public void mainTest(){
+        YouTubeBO youTubeBO=new YouTubeBO();
+       youTubeBO.openYouTubePage();
+
     }
 }
